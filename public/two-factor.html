@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Two-factor verification — Secure Login</title>
+  <meta name="description" content="Complete sign-in by entering the current code from your authenticator app or a single-use recovery code.">
+  <meta name="theme-color" content="#05070d">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/two-factor.js" defer></script>
+</head>
+<body class="page auth-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-blob aurora-blob-1"></span>
+    <span class="aurora-blob aurora-blob-2"></span>
+    <span class="aurora-blob aurora-blob-3"></span>
+  </div>
+
+  <header class="site-header auth-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Secure Login home">
+        <img src="/images/logo-mark.svg" alt="" width="38" height="38">
+        <span class="brand-text">
+          <span class="brand-name">Secure Login</span>
+          <span class="brand-sub">Access control</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <a class="btn btn-ghost btn-sm" href="/login">Back to sign in</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-main" id="main">
+    <div class="container">
+      <div class="auth-panel reveal">
+        <section class="auth-card two-factor-card glass card-glow" aria-labelledby="two-factor-title">
+          <span class="two-factor-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/><path d="m9 9 1.5 1.5L13 8"/></svg>
+          </span>
+
+          <div class="auth-card-head">
+            <span class="auth-badge"><span class="status-dot" aria-hidden="true"></span> Second factor required</span>
+            <h2 id="two-factor-title">Verify it's you</h2>
+            <p>Your password checked out. One more step before the session is created.</p>
+          </div>
+
+          <form class="form" id="two-factor-form" novalidate>
+            <div class="field">
+              <div class="label-row">
+                <label for="two-factor-code">Authentication code</label>
+                <span class="label-hint">6 digits</span>
+              </div>
+              <input class="input code-input" id="two-factor-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="000000" maxlength="11" spellcheck="false" aria-describedby="two-factor-hint" required autofocus>
+              <p class="label-hint" id="two-factor-hint" data-code-hint>
+                Open your authenticator app and enter the current six-digit code.
+              </p>
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit" data-submit>
+              <span class="spinner" data-spinner hidden aria-hidden="true"></span>
+              <span class="btn-label" data-btn-label>Verify and continue</span>
+              <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </button>
+          </form>
+
+          <div class="two-factor-switch">
+            <button class="link-button" type="button" data-recovery-toggle>Use a recovery code</button>
+          </div>
+
+          <p class="two-factor-help">
+            Recovery codes are single-use and were shown when two-factor was enabled.
+            This pending verification expires after five minutes.
+          </p>
+
+          <div class="divider" aria-hidden="true"></div>
+
+          <div class="two-factor-switch">
+            <button class="link-button" type="button" data-cancel-2fa>Cancel and sign out</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer auth-footer">
+    <div class="container auth-footer-inner">
+      <p>© <span data-current-year>2026</span> Secure Login System. Local demonstration project.</p>
+      <p class="mono">Pending session · 5 minute window</p>
+    </div>
+  </footer>
+</body>
+</html>

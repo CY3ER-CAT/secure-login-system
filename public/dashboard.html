@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Security console — Secure Login</title>
+  <meta name="description" content="Your Secure Login account, session details, two-factor authentication, and recent security activity.">
+  <meta name="theme-color" content="#05070d">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/dashboard.js" defer></script>
+</head>
+<body class="page app-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-blob aurora-blob-1"></span>
+    <span class="aurora-blob aurora-blob-2"></span>
+    <span class="aurora-blob aurora-blob-3"></span>
+  </div>
+
+  <header class="app-topbar">
+    <div class="container app-topbar-inner">
+      <a class="brand" href="/dashboard" aria-label="Secure Login dashboard">
+        <img src="/images/logo-mark.svg" alt="" width="38" height="38">
+        <span class="brand-text">
+          <span class="brand-name">Secure Login</span>
+          <span class="brand-sub">Security console</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-controls="app-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="app-nav" id="app-nav" aria-label="Console">
+        <a class="is-active" href="#overview">Overview</a>
+        <a href="#account">Account</a>
+        <a href="#two-factor">Two-factor</a>
+        <a href="#activity">Activity</a>
+      </nav>
+
+      <div class="app-user">
+        <span class="user-avatar" data-user-avatar aria-hidden="true">SL</span>
+        <span class="user-meta">
+          <span class="user-name" data-user-name>Loading…</span>
+          <span class="user-handle" data-user-handle>@account</span>
+        </span>
+        <button class="btn btn-ghost btn-sm" type="button" data-logout>
+          <span class="spinner" data-spinner hidden aria-hidden="true"></span>
+          <span class="btn-label" data-btn-label>Sign out</span>
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main" id="main" data-app-main>
+    <div class="container">
+      <div class="alert alert-error" data-load-error role="alert" hidden></div>
+
+      <section class="app-hero reveal" id="overview">
+        <div>
+          <p class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Authenticated session</p>
+          <h1>Welcome back, <span class="gradient-text" data-first-name>operator</span>.</h1>
+          <p>Your identity, session, and second factor at a glance.</p>
+        </div>
+        <div class="session-pill glass">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span class="session-pill-copy">
+            <strong>Session active</strong>
+            <span data-session-expiry>Checking expiry…</span>
+          </span>
+        </div>
+      </section>
+
+      <section class="stat-grid" aria-label="Account summary">
+        <article class="stat-card glass reveal">
+          <div class="stat-head">
+            <span class="stat-label">Account status</span>
+            <span class="stat-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.1 7.5 9.5 4.3-1.4 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.5 12 2.5 2.5 4.5-4.5"/></svg>
+            </span>
+          </div>
+          <p class="stat-value" data-stat-status>—</p>
+          <p class="stat-meta">Session verified server-side</p>
+        </article>
+
+        <article class="stat-card glass reveal">
+          <div class="stat-head">
+            <span class="stat-label">Two-factor</span>
+            <span class="stat-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/><path d="m9 9 1.5 1.5L13 8"/></svg>
+            </span>
+          </div>
+          <p class="stat-value" data-stat-2fa>—</p>
+          <p class="stat-meta" data-stat-2fa-meta>Checking second factor…</p>
+        </article>
+
+        <article class="stat-card glass reveal">
+          <div class="stat-head">
+            <span class="stat-label">Member since</span>
+            <span class="stat-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3 11h18"/></svg>
+            </span>
+          </div>
+          <p class="stat-value" data-stat-member>—</p>
+          <p class="stat-meta">Local account record</p>
+        </article>
+
+        <article class="stat-card glass reveal">
+          <div class="stat-head">
+            <span class="stat-label">Last sign-in</span>
+            <span class="stat-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+          </div>
+          <p class="stat-value" data-stat-last-login>—</p>
+          <p class="stat-meta" data-stat-last-login-meta>Checking activity…</p>
+        </article>
+      </section>
+
+      <div class="panel-grid">
+        <section class="panel glass reveal" id="account" aria-labelledby="account-title">
+          <div class="panel-head">
+            <div>
+              <h2 class="panel-title" id="account-title">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c0-1.7 1.3-3 3-3s3 1.3 3 3"/><path d="M14 10h4"/><path d="M14 14h4"/></svg>
+                Account details
+              </h2>
+              <p class="panel-sub">Stored server-side. Passwords are hashed with bcrypt.</p>
+            </div>
+            <span class="badge badge-blue">Verified</span>
+          </div>
+
+          <dl class="detail-list">
+            <div class="detail-row">
+              <dt>Full name</dt>
+              <dd data-account-name>—</dd>
+            </div>
+            <div class="detail-row">
+              <dt>Email</dt>
+              <dd data-account-email>—</dd>
+            </div>
+            <div class="detail-row">
+              <dt>Username</dt>
+              <dd class="mono" data-account-username>—</dd>
+            </div>
+            <div class="detail-row">
+              <dt>Created</dt>
+              <dd data-account-created>—</dd>
+            </div>
+            <div class="detail-row">
+              <dt>Last sign-in</dt>
+              <dd data-account-last-login>—</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="panel glass reveal" id="two-factor" aria-labelledby="two-factor-title">
+          <div class="panel-head">
+            <div>
+              <h2 class="panel-title" id="two-factor-title">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/><path d="m9 9 1.5 1.5L13 8"/></svg>
+                Two-factor authentication
+              </h2>
+              <p class="panel-sub">A time-based one-time password plus single-use recovery codes.</p>
+            </div>
+            <span class="badge badge-amber" data-2fa-badge hidden>Off</span>
+          </div>
+
+          <div class="two-factor-state" data-2fa-state>
+            <span class="two-factor-state-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.1 7.5 9.5 4.3-1.4 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            </span>
+            <span class="two-factor-state-copy">
+              <strong data-2fa-title>Checking two-factor status…</strong>
+              <span data-2fa-copy>Loading your security configuration.</span>
+            </span>
+          </div>
+
+          <div class="panel-actions" data-2fa-start-wrap>
+            <button class="btn btn-primary btn-sm" type="button" data-2fa-start>
+              <span class="spinner" data-spinner hidden aria-hidden="true"></span>
+              <span class="btn-label" data-btn-label>Set up two-factor</span>
+              <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            </button>
+          </div>
+
+          <div class="setup-box" data-2fa-setup hidden>
+            <div class="setup-steps">
+              <div class="setup-step">
+                <span class="setup-index" aria-hidden="true">1</span>
+                <div>
+                  <h4>Scan the QR code</h4>
+                  <p>Open your authenticator app, add a new account, and scan this code. The setup key is shown for manual entry.</p>
+                  <div class="qr-row">
+                    <div class="qr-box">
+                      <img data-2fa-qr alt="QR code for authenticator app enrollment" width="148" height="148">
+                    </div>
+                    <div class="qr-copy">
+                      <p class="secret-label">Manual setup key</p>
+                      <div class="secret-row">
+                        <code class="secret-value" data-2fa-secret></code>
+                        <button class="icon-button" type="button" data-2fa-copy-secret aria-label="Copy setup key">
+                          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        </button>
+                      </div>
+                      <p class="label-hint">Setup expires after five minutes.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="setup-step">
+                <span class="setup-index" aria-hidden="true">2</span>
+                <div>
+                  <h4>Confirm the first code</h4>
+                  <p>Enter the current six-digit code from your app to finish enrollment. Recovery codes appear once.</p>
+                  <form class="inline-form" data-2fa-enable-form novalidate>
+                    <div class="field">
+                      <label for="enable-code">Authenticator code</label>
+                      <input class="input" id="enable-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="000000" maxlength="6" spellcheck="false" data-2fa-enable-code required>
+                    </div>
+                    <button class="btn btn-primary btn-sm" type="submit" data-submit>
+                      <span class="spinner" data-spinner hidden aria-hidden="true"></span>
+                      <span class="btn-label" data-btn-label>Enable</span>
+                    </button>
+                  </form>
+                  <p class="alert alert-error" data-enable-feedback role="alert" hidden></p>
+                  <div class="panel-actions panel-actions-spaced">
+                    <button class="btn btn-ghost btn-sm" type="button" data-2fa-cancel>Cancel setup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div data-2fa-enabled-actions hidden>
+            <div class="divider" aria-hidden="true"></div>
+
+            <div class="danger-zone">
+              <h4>Disable two-factor</h4>
+              <p>Requires your current password and a valid authenticator or recovery code.</p>
+              <form class="inline-form" data-2fa-disable-form novalidate>
+                <div class="field">
+                  <label for="disable-password">Current password</label>
+                  <input class="input" id="disable-password" name="password" type="password" autocomplete="current-password" maxlength="200" data-2fa-disable-password required>
+                </div>
+                <div class="field">
+                  <label for="disable-code">Code</label>
+                  <input class="input" id="disable-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="000000" maxlength="11" spellcheck="false" data-2fa-disable-code required>
+                </div>
+                <button class="btn btn-danger btn-sm" type="submit" data-submit>
+                  <span class="spinner" data-spinner hidden aria-hidden="true"></span>
+                  <span class="btn-label" data-btn-label>Disable</span>
+                </button>
+              </form>
+              <p class="alert alert-error" data-disable-feedback role="alert" hidden></p>
+            </div>
+
+            <div class="divider" aria-hidden="true"></div>
+
+            <h4 class="panel-title panel-title-sm">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></svg>
+              Regenerate recovery codes
+            </h4>
+            <p class="panel-sub">Invalidates every existing recovery code. Requires your password and a current code.</p>
+            <form class="inline-form" data-recovery-form novalidate>
+              <div class="field">
+                <label for="recovery-password">Current password</label>
+                <input class="input" id="recovery-password" name="password" type="password" autocomplete="current-password" maxlength="200" data-recovery-password required>
+              </div>
+              <div class="field">
+                <label for="recovery-code">Code</label>
+                <input class="input" id="recovery-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="000000" maxlength="11" spellcheck="false" data-recovery-code required>
+              </div>
+              <button class="btn btn-secondary btn-sm" type="submit" data-submit>
+                <span class="spinner" data-spinner hidden aria-hidden="true"></span>
+                <span class="btn-label" data-btn-label>Regenerate</span>
+              </button>
+            </form>
+            <p class="alert alert-error" data-recovery-feedback role="alert" hidden></p>
+          </div>
+
+          <div class="recovery-panel" data-recovery-panel hidden>
+            <div class="recovery-panel-head">
+              <h4>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 21h20L12 3Z"/><path d="M12 9v5"/><path d="M12 18h.01"/></svg>
+                Save these recovery codes now
+              </h4>
+              <button class="icon-button" type="button" data-recovery-close aria-label="Hide recovery codes">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12"/><path d="m18 6-12 12"/></svg>
+              </button>
+            </div>
+            <p>Each code works once. Store them offline. This is the only time they are displayed.</p>
+            <div class="code-grid" data-recovery-codes aria-label="Recovery codes"></div>
+            <div class="recovery-actions">
+              <button class="btn btn-secondary btn-sm" type="button" data-recovery-copy>
+                <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copy codes
+              </button>
+              <button class="btn btn-ghost btn-sm" type="button" data-recovery-download>
+                <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+                Download .txt
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="panel glass reveal" id="activity" aria-labelledby="activity-title">
+        <div class="panel-head">
+          <div>
+            <h2 class="panel-title" id="activity-title">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+              Recent security activity
+            </h2>
+            <p class="panel-sub">The latest authentication events recorded for this account.</p>
+          </div>
+          <span class="badge badge-blue">Last 8</span>
+        </div>
+        <div class="event-list" data-event-list>
+          <p class="empty-state">Loading security activity…</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container app-footer-inner">
+      <p>© <span data-current-year>2026</span> Secure Login System. Local demonstration project.</p>
+      <p class="mono">Session data · HttpOnly · SameSite=Lax</p>
+    </div>
+  </footer>
+</body>
+</html>

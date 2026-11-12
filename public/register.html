@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create account — Secure Login</title>
+  <meta name="description" content="Create a Secure Login account with a unique username, bcrypt-hashed password, and optional TOTP two-factor authentication.">
+  <meta name="theme-color" content="#05070d">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/register.js" defer></script>
+</head>
+<body class="page auth-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-blob aurora-blob-1"></span>
+    <span class="aurora-blob aurora-blob-2"></span>
+    <span class="aurora-blob aurora-blob-3"></span>
+  </div>
+
+  <header class="site-header auth-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Secure Login home">
+        <img src="/images/logo-mark.svg" alt="" width="38" height="38">
+        <span class="brand-text">
+          <span class="brand-name">Secure Login</span>
+          <span class="brand-sub">Access control</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/#features">Platform</a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <a class="btn btn-ghost btn-sm" href="/login">Sign in</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-main" id="main">
+    <div class="container auth-shell">
+      <aside class="auth-aside reveal">
+        <p class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> New identity</p>
+        <h1>Start with a <span class="gradient-text">strong identity</span>.</h1>
+        <p class="auth-lede">
+          One account, one unique username, and a password that has to earn its
+          place. Registration validates every field on the server before a single
+          credential is stored.
+        </p>
+
+        <ul class="auth-points">
+          <li>
+            <span class="auth-point-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c0-1.7 1.3-3 3-3s3 1.3 3 3"/><path d="M14 10h4"/><path d="M14 14h4"/></svg>
+            </span>
+            <span>
+              <strong>Unique identity</strong>
+              <span>Email and username are normalized, validated, and constrained at the database layer.</span>
+            </span>
+          </li>
+          <li>
+            <span class="auth-point-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg>
+            </span>
+            <span>
+              <strong>Deliberate password policy</strong>
+              <span>Twelve characters minimum, mixed character classes, no personal details or predictable sequences.</span>
+            </span>
+          </li>
+          <li>
+            <span class="auth-point-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.1 7.5 9.5 4.3-1.4 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.5 12 2.5 2.5 4.5-4.5"/></svg>
+            </span>
+            <span>
+              <strong>Upgrade to two-factor</strong>
+              <span>Enroll a TOTP authenticator from the console and store single-use recovery codes offline.</span>
+            </span>
+          </li>
+        </ul>
+
+        <figure class="auth-quote glass reveal">
+          <p>“The cheapest vulnerability to fix is the one your validation layer refuses to accept in the first place.”</p>
+          <footer><span class="status-dot" aria-hidden="true"></span> Validated on both sides</footer>
+        </figure>
+      </aside>
+
+      <div class="auth-panel reveal">
+        <section class="auth-card glass card-glow" aria-labelledby="register-title">
+          <div class="auth-card-head">
+            <span class="auth-badge"><span class="status-dot" aria-hidden="true"></span> Registration</span>
+            <h2 id="register-title">Create your account</h2>
+            <p>A unique identity, a strong password, and a server-side session.</p>
+          </div>
+
+          <form class="form" id="register-form" novalidate>
+            <div class="field">
+              <label for="register-full-name">Full name</label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16c0-1.7 1.3-3 3-3s3 1.3 3 3"/><path d="M14 10h4"/><path d="M14 14h4"/></svg>
+                </span>
+                <input class="input" id="register-full-name" name="full_name" type="text" autocomplete="name" placeholder="Ada Lovelace" minlength="2" maxlength="80" required autofocus>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <div class="label-row">
+                  <label for="register-username">Username</label>
+                  <span class="label-hint" id="username-hint">a–z · 0–9 · _</span>
+                </div>
+                <div class="input-wrap">
+                  <span class="input-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg>
+                  </span>
+                  <input class="input" id="register-username" name="username" type="text" autocomplete="username" spellcheck="false" autocapitalize="none" placeholder="ada_lovelace" aria-describedby="username-hint" minlength="3" maxlength="30" required>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="register-email">Email</label>
+                <div class="input-wrap">
+                  <span class="input-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                  </span>
+                  <input class="input" id="register-email" name="email" type="email" autocomplete="email" spellcheck="false" autocapitalize="none" placeholder="ada@example.com" maxlength="254" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="label-row">
+                <label for="register-password">Password</label>
+                <span class="label-hint">12–72 characters</span>
+              </div>
+              <div class="input-wrap has-toggle">
+                <span class="input-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg>
+                </span>
+                <input class="input" id="register-password" name="password" type="password" autocomplete="new-password" placeholder="Choose a strong password" aria-describedby="password-strength" minlength="12" maxlength="72" required>
+                <button class="password-toggle" type="button" data-password-toggle aria-controls="register-password" aria-label="Show password">
+                  <svg class="icon icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="icon icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 3 18 18"/><path d="M10.6 5.1A10.9 10.9 0 0 1 12 5c6.5 0 10 7 10 7a17.8 17.8 0 0 1-3.3 4.2"/><path d="M6.6 6.6C3.6 8.6 2 12 2 12s3.5 7 10 7a10.9 10.9 0 0 0 5.4-1.4"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+                </button>
+              </div>
+
+              <div class="strength" id="password-strength">
+                <div class="strength-head">
+                  <span class="strength-label">Password strength</span>
+                  <span class="strength-value" data-strength-value data-score="0">Too short</span>
+                </div>
+                <div class="strength-meter" data-strength-meter data-score="0" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+                <ul class="requirements">
+                  <li data-requirement="length"><span class="requirement-dot" aria-hidden="true"></span> 12–72 characters</li>
+                  <li data-requirement="upper"><span class="requirement-dot" aria-hidden="true"></span> Uppercase letter</li>
+                  <li data-requirement="lower"><span class="requirement-dot" aria-hidden="true"></span> Lowercase letter</li>
+                  <li data-requirement="number"><span class="requirement-dot" aria-hidden="true"></span> Number</li>
+                  <li data-requirement="symbol"><span class="requirement-dot" aria-hidden="true"></span> Symbol</li>
+                  <li data-requirement="noSpace"><span class="requirement-dot" aria-hidden="true"></span> No spaces</li>
+                  <li data-requirement="noPersonal"><span class="requirement-dot" aria-hidden="true"></span> No personal details</li>
+                  <li data-requirement="notCommon"><span class="requirement-dot" aria-hidden="true"></span> Not a common password</li>
+                  <li data-requirement="noSequence"><span class="requirement-dot" aria-hidden="true"></span> No repeated runs or sequences</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="register-confirm">Confirm password</label>
+              <div class="input-wrap has-toggle">
+                <span class="input-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="m9 15 2 2 4-4"/></svg>
+                </span>
+                <input class="input" id="register-confirm" name="confirm_password" type="password" autocomplete="new-password" placeholder="Re-enter your password" maxlength="72" required>
+                <button class="password-toggle" type="button" data-password-toggle aria-controls="register-confirm" aria-label="Show password">
+                  <svg class="icon icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="icon icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 3 18 18"/><path d="M10.6 5.1A10.9 10.9 0 0 1 12 5c6.5 0 10 7 10 7a17.8 17.8 0 0 1-3.3 4.2"/><path d="M6.6 6.6C3.6 8.6 2 12 2 12s3.5 7 10 7a10.9 10.9 0 0 0 5.4-1.4"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit" data-submit>
+              <span class="spinner" data-spinner hidden aria-hidden="true"></span>
+              <span class="btn-label" data-btn-label>Create account</span>
+              <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </button>
+
+            <p class="form-note">
+              Passwords are hashed with bcrypt before storage and are never written
+              to logs or returned in responses.
+            </p>
+          </form>
+
+          <p class="auth-alt">Already registered? <a href="/login">Sign in</a></p>
+        </section>
+
+        <ul class="auth-meta" aria-label="Security properties">
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.1 7.5 9.5 4.3-1.4 7.5-4.9 7.5-9.5V6L12 3Z"/></svg>
+            Bcrypt · 12 rounds
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+            Parameterized SQL
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            CSRF protected
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer auth-footer">
+    <div class="container auth-footer-inner">
+      <p>© <span data-current-year>2026</span> Secure Login System. Local demonstration project.</p>
+      <p class="mono">No trackers. No third-party scripts.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Login — Authentication built like infrastructure</title>
+  <meta name="description" content="A complete secure authentication system with bcrypt, server-side sessions, CSRF protection, rate limiting, and TOTP two-factor authentication.">
+  <meta name="theme-color" content="#05070d">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/common.js" defer></script>
+</head>
+<body class="page landing">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-blob aurora-blob-1"></span>
+    <span class="aurora-blob aurora-blob-2"></span>
+    <span class="aurora-blob aurora-blob-3"></span>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Secure Login home">
+        <img src="/images/logo-mark.svg" alt="" width="38" height="38">
+        <span class="brand-text">
+          <span class="brand-name">Secure Login</span>
+          <span class="brand-sub">Access control</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="#features">Platform</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#how-it-works">How it works</a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <a class="btn btn-ghost btn-sm" href="/login">Sign in</a>
+        <a class="btn btn-primary btn-sm" href="/register">Create account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Secure authentication, end to end</p>
+        <h1>Sign-in security, <span class="gradient-text">engineered</span> like infrastructure.</h1>
+        <p class="hero-lede">
+          A complete authentication layer for people who treat access as a system:
+          bcrypt-hashed credentials, server-side sessions, CSRF synchroniser tokens,
+          and optional TOTP two-factor — with a codebase you can read and a test suite you can run.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="/register">
+            Create your account
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost btn-lg" href="/login">Sign in</a>
+        </div>
+        <ul class="trust-row" aria-label="Core security controls">
+          <li><span class="mono">bcrypt</span><span>12 rounds</span></li>
+          <li><span class="mono">AES-256-GCM</span><span>TOTP secrets</span></li>
+          <li><span class="mono">SQLite</span><span>parameterized</span></li>
+          <li><span class="mono">CSRF</span><span>synchroniser token</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+        <div class="console glass card-glow">
+          <div class="console-bar">
+            <span class="console-dots"><span></span><span></span><span></span></span>
+            <span class="console-title">security posture</span>
+            <span class="badge badge-green"><span class="status-dot" aria-hidden="true"></span> protected</span>
+          </div>
+          <div class="console-body">
+            <div class="console-session">
+              <span class="session-avatar">SL</span>
+              <span class="session-copy">
+                <span class="session-name">session / active</span>
+                <span class="session-meta">server-side · HttpOnly · SameSite=Lax</span>
+              </span>
+              <span class="status-dot status-dot-lg" aria-hidden="true"></span>
+            </div>
+
+            <div class="control-list">
+              <div class="control-row">
+                <span>Password hashing</span>
+                <span class="mono">bcrypt · 12</span>
+                <svg class="icon icon-sm control-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>
+              </div>
+              <div class="control-row">
+                <span>Session store</span>
+                <span class="mono">SQLite</span>
+                <svg class="icon icon-sm control-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>
+              </div>
+              <div class="control-row">
+                <span>CSRF token</span>
+                <span class="mono">verified</span>
+                <svg class="icon icon-sm control-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>
+              </div>
+              <div class="control-row">
+                <span>Two-factor auth</span>
+                <span class="mono">optional</span>
+                <svg class="icon icon-sm control-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg>
+              </div>
+            </div>
+
+            <div class="console-log">
+              <p><span class="log-time">00:00:01</span><span class="log-ok">PASS</span> password hash verified</p>
+              <p><span class="log-time">00:00:01</span><span class="log-ok">PASS</span> csrf token validated</p>
+              <p><span class="log-time">00:00:02</span><span class="log-ok">PASS</span> session id regenerated</p>
+              <p><span class="log-time">00:00:02</span><span class="log-ok">PASS</span> parameterized query</p>
+            </div>
+          </div>
+        </div>
+        <span class="floating-chip chip-1">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          0 plaintext secrets
+        </span>
+        <span class="floating-chip chip-2">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.4 2.9 8.4 7 10 4.1-1.6 7-5.6 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          TOTP ready
+        </span>
+      </div>
+    </section>
+
+    <section class="assurance-band">
+      <div class="container assurance-inner reveal">
+        <p class="assurance-label">Defense in depth, by default</p>
+        <ul class="assurance-list">
+          <li>Helmet headers</li>
+          <li>Strict CSP</li>
+          <li>Account lockout</li>
+          <li>Input validation</li>
+          <li>Session expiry</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section container" id="features">
+      <div class="section-heading reveal">
+        <p class="eyebrow">The control plane</p>
+        <h2>Every layer does one job well.</h2>
+        <p>
+          Authentication fails at the seams. Each control below is implemented in a
+          separate, testable layer — not bolted on after the login form.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card glass reveal">
+          <span class="feature-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg>
+          </span>
+          <h3>Credential hashing</h3>
+          <p>bcrypt with a unique salt and a configurable work factor. Plaintext passwords never touch the database, logs, or API responses.</p>
+          <span class="feature-meta mono">bcrypt · 12 rounds</span>
+        </article>
+
+        <article class="feature-card glass reveal">
+          <span class="feature-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9h10"/><path d="M7 13h6"/><path d="M7 17h4"/></svg>
+          </span>
+          <h3>Server-side sessions</h3>
+          <p>A signed, HttpOnly cookie carries only a session ID. Session data lives server-side, the ID is regenerated at sign-in, and logout destroys it completely.</p>
+          <span class="feature-meta mono">HttpOnly · SameSite</span>
+        </article>
+
+        <article class="feature-card glass reveal">
+          <span class="feature-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.4 2.9 8.4 7 10 4.1-1.6 7-5.6 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <h3>Request integrity</h3>
+          <p>Synchroniser-token CSRF protection on every state-changing request, paired with a strict Content Security Policy and hardened response headers.</p>
+          <span class="feature-meta mono">CSRF · CSP · Helmet</span>
+        </article>
+
+        <article class="feature-card glass reveal">
+          <span class="feature-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M10 7h4"/><path d="M9 12h6"/><path d="M9 16h6"/></svg>
+          </span>
+          <h3>Two-factor, stored properly</h3>
+          <p>Enroll with a QR code, verify with a six-digit TOTP, and keep secrets encrypted at rest with AES-256-GCM. Recovery codes are single-use and hashed.</p>
+          <span class="feature-meta mono">TOTP · AES-256-GCM</span>
+        </article>
+
+        <article class="feature-card glass reveal">
+          <span class="feature-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M12 18v3"/><path d="m4.2 7.5 2.6 1.5"/><path d="m17.2 15 2.6 1.5"/><path d="m4.2 16.5 2.6-1.5"/><path d="m17.2 9 2.6-1.5"/><circle cx="12" cy="12" r="3.2"/></svg>
+          </span>
+          <h3>Abuse resistance</h3>
+          <p>Per-IP and per-identifier login limits, temporary account lockout, generic authentication errors, and a dummy bcrypt comparison for unknown accounts.</p>
+          <span class="feature-meta mono">rate limit · lockout</span>
+        </article>
+
+        <article class="feature-card glass reveal">
+          <span class="feature-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
+          </span>
+          <h3>Data integrity</h3>
+          <p>Every query is parameterized. Schema constraints and case-insensitive unique indexes keep identity data consistent under concurrency.</p>
+          <span class="feature-meta mono">SQLite · prepared statements</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section architecture-section" id="architecture">
+      <div class="container architecture-grid">
+        <div class="architecture-copy reveal">
+          <p class="eyebrow">Defense in depth</p>
+          <h2>Trust is a stack, not a checkbox.</h2>
+          <p>
+            A request passes through independent controls before it reaches the database.
+            If one layer is bypassed, the next one still has a job to do.
+          </p>
+          <ul class="check-list">
+            <li><span class="check-mark" aria-hidden="true">✓</span> Hardened headers and a CSP that refuses inline script.</li>
+            <li><span class="check-mark" aria-hidden="true">✓</span> A server-side session that can be revoked instantly.</li>
+            <li><span class="check-mark" aria-hidden="true">✓</span> Validation and parameterized queries at the data edge.</li>
+          </ul>
+        </div>
+
+        <div class="layer-stack reveal" aria-label="Request security layers">
+          <div class="layer">
+            <span class="layer-index mono">01</span>
+            <span class="layer-body"><strong>Edge</strong><span>Helmet · CSP · no-store</span></span>
+            <span class="badge badge-blue">headers</span>
+          </div>
+          <div class="layer">
+            <span class="layer-index mono">02</span>
+            <span class="layer-body"><strong>Session</strong><span>signed cookie · server-side store</span></span>
+            <span class="badge badge-blue">state</span>
+          </div>
+          <div class="layer">
+            <span class="layer-index mono">03</span>
+            <span class="layer-body"><strong>Request</strong><span>CSRF token · rate limits</span></span>
+            <span class="badge badge-violet">verify</span>
+          </div>
+          <div class="layer">
+            <span class="layer-index mono">04</span>
+            <span class="layer-body"><strong>Application</strong><span>validation · auth guards</span></span>
+            <span class="badge badge-violet">enforce</span>
+          </div>
+          <div class="layer">
+            <span class="layer-index mono">05</span>
+            <span class="layer-body"><strong>Data</strong><span>prepared statements · constraints</span></span>
+            <span class="badge badge-green">persist</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="how-it-works">
+      <div class="section-heading reveal">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps. No shortcuts.</h2>
+      </div>
+      <div class="step-grid">
+        <article class="step-card reveal">
+          <span class="step-number mono">01</span>
+          <h3>Create an account</h3>
+          <p>Choose a username and a strong password. The server validates every field, hashes the password, and starts an authenticated session.</p>
+        </article>
+        <article class="step-card reveal">
+          <span class="step-number mono">02</span>
+          <h3>Sign in securely</h3>
+          <p>Credentials are checked with bcrypt. If two-factor is enabled, a TOTP or single-use recovery code is required before the session is created.</p>
+        </article>
+        <article class="step-card reveal">
+          <span class="step-number mono">03</span>
+          <h3>Use the console</h3>
+          <p>The dashboard shows account details, session state, and security activity. Enable 2FA, review your controls, and sign out when you are done.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="cta glass card-glow reveal">
+        <div class="cta-copy">
+          <p class="eyebrow">Ready when you are</p>
+          <h2>See the whole stack from the inside.</h2>
+          <p>Create an account, enable two-factor authentication, and inspect every control from the security console.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-lg" href="/register">Create an account</a>
+          <a class="btn btn-ghost btn-lg" href="/login">Sign in</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="Secure Login home">
+          <img src="/images/logo-mark.svg" alt="" width="32" height="32">
+          <span class="brand-text">
+            <span class="brand-name">Secure Login</span>
+            <span class="brand-sub">Access control</span>
+          </span>
+        </a>
+        <p>Built with Node.js, Express, SQLite, and a healthy suspicion of user input.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div>
+          <span class="footer-heading">Platform</span>
+          <a href="#features">Security controls</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#how-it-works">How it works</a>
+        </div>
+        <div>
+          <span class="footer-heading">Account</span>
+          <a href="/login">Sign in</a>
+          <a href="/register">Create account</a>
+        </div>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span data-current-year>2026</span> Secure Login System. Local demonstration project.</p>
+      <p class="mono">No trackers. No third-party scripts.</p>
+    </div>
+  </footer>
+</body>
+</html>

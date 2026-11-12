@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Secure Login</title>
+  <meta name="description" content="The page you requested does not exist. Return to the Secure Login home page or sign in to your security console.">
+  <meta name="theme-color" content="#05070d">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/common.js" defer></script>
+</head>
+<body class="page auth-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-blob aurora-blob-1"></span>
+    <span class="aurora-blob aurora-blob-2"></span>
+    <span class="aurora-blob aurora-blob-3"></span>
+  </div>
+
+  <header class="site-header auth-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Secure Login home">
+        <img src="/images/logo-mark.svg" alt="" width="38" height="38">
+        <span class="brand-text">
+          <span class="brand-name">Secure Login</span>
+          <span class="brand-sub">Access control</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/#features">Platform</a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <a class="btn btn-primary btn-sm" href="/login">Sign in</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="error-page" id="main">
+    <div class="container">
+      <div class="error-shell reveal">
+        <p class="error-code" aria-hidden="true">404</p>
+        <p class="eyebrow">Route not found</p>
+        <h1>This path doesn't exist.</h1>
+        <p>
+          The page may have moved, the link may be incomplete, or the resource was
+          never here. Nothing was changed on your account. Use one of the routes
+          below to continue.
+        </p>
+        <div class="error-actions">
+          <a class="btn btn-primary" href="/">
+            Back to home
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="/login">Sign in</a>
+        </div>
+        <p class="error-meta">HTTP 404 · Secure Login System</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer auth-footer">
+    <div class="container auth-footer-inner">
+      <p>© <span data-current-year>2026</span> Secure Login System. Local demonstration project.</p>
+      <p class="mono">No route matched</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in — Secure Login</title>
+  <meta name="description" content="Sign in to the Secure Login security console with your username or email address.">
+  <meta name="theme-color" content="#05070d">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/login.js" defer></script>
+</head>
+<body class="page auth-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="aurora" aria-hidden="true">
+    <span class="aurora-blob aurora-blob-1"></span>
+    <span class="aurora-blob aurora-blob-2"></span>
+    <span class="aurora-blob aurora-blob-3"></span>
+  </div>
+
+  <header class="site-header auth-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Secure Login home">
+        <img src="/images/logo-mark.svg" alt="" width="38" height="38">
+        <span class="brand-text">
+          <span class="brand-name">Secure Login</span>
+          <span class="brand-sub">Access control</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/#features">Platform</a>
+        <span class="nav-divider" aria-hidden="true"></span>
+        <a class="btn btn-primary btn-sm" href="/register">Create account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-main" id="main">
+    <div class="container auth-shell">
+      <aside class="auth-aside reveal">
+        <p class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Authentication layer</p>
+        <h1>Welcome back to your <span class="gradient-text">security console</span>.</h1>
+        <p class="auth-lede">
+          Sign in with your username or email. Your password is verified with bcrypt,
+          your session lives on the server, and every state-changing request carries
+          a CSRF token.
+        </p>
+
+        <ul class="auth-points">
+          <li>
+            <span class="auth-point-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.1 7.5 9.5 4.3-1.4 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.5 12 2.5 2.5 4.5-4.5"/></svg>
+            </span>
+            <span>
+              <strong>Session hardening</strong>
+              <span>A new session ID on sign-in, an HttpOnly cookie, and rolling expiry.</span>
+            </span>
+          </li>
+          <li>
+            <span class="auth-point-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg>
+            </span>
+            <span>
+              <strong>Credential protection</strong>
+              <span>Bcrypt hashes at rest and intentionally generic authentication errors.</span>
+            </span>
+          </li>
+          <li>
+            <span class="auth-point-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/><path d="m9 9 1.5 1.5L13 8"/></svg>
+            </span>
+            <span>
+              <strong>Two-factor ready</strong>
+              <span>Add TOTP and single-use recovery codes from inside the console.</span>
+            </span>
+          </li>
+        </ul>
+
+        <figure class="auth-quote glass reveal">
+          <p>“Security is not a feature you add at the end. It is the shape of the system from the first request.”</p>
+          <footer><span class="status-dot" aria-hidden="true"></span> Defense in depth</footer>
+        </figure>
+      </aside>
+
+      <div class="auth-panel reveal">
+        <section class="auth-card glass card-glow" aria-labelledby="login-title">
+          <div class="auth-card-head">
+            <span class="auth-badge"><span class="status-dot" aria-hidden="true"></span> Secure session</span>
+            <h2 id="login-title">Sign in</h2>
+            <p>Use your username or email address to continue.</p>
+          </div>
+
+          <div class="alert" data-login-notice role="status" hidden></div>
+
+          <form class="form" id="login-form" novalidate>
+            <div class="field">
+              <label for="login-identifier">Username or email</label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+                </span>
+                <input class="input" id="login-identifier" name="identifier" type="text" autocomplete="username" spellcheck="false" autocapitalize="none" placeholder="operator or you@example.com" maxlength="254" required autofocus>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="label-row">
+                <label for="login-password">Password</label>
+                <span class="label-hint">case-sensitive</span>
+              </div>
+              <div class="input-wrap has-toggle">
+                <span class="input-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg>
+                </span>
+                <input class="input" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" maxlength="200" required>
+                <button class="password-toggle" type="button" data-password-toggle aria-controls="login-password" aria-label="Show password">
+                  <svg class="icon icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="icon icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 3 18 18"/><path d="M10.6 5.1A10.9 10.9 0 0 1 12 5c6.5 0 10 7 10 7a17.8 17.8 0 0 1-3.3 4.2"/><path d="M6.6 6.6C3.6 8.6 2 12 2 12s3.5 7 10 7a10.9 10.9 0 0 0 5.4-1.4"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-block" type="submit" data-submit>
+              <span class="spinner" data-spinner hidden aria-hidden="true"></span>
+              <span class="btn-label" data-btn-label>Sign in securely</span>
+              <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </button>
+
+            <p class="form-note">
+              Failed attempts are rate limited and account lockouts are temporary.
+              Sign-in errors stay generic by design.
+            </p>
+          </form>
+
+          <p class="auth-alt">New here? <a href="/register">Create an account</a></p>
+        </section>
+
+        <ul class="auth-meta" aria-label="Security properties">
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            HttpOnly session
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.1 7.5 9.5 4.3-1.4 7.5-4.9 7.5-9.5V6L12 3Z"/></svg>
+            CSRF protected
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            Rolling expiry
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer auth-footer">
+    <div class="container auth-footer-inner">
+      <p>© <span data-current-year>2026</span> Secure Login System. Local demonstration project.</p>
+      <p class="mono">No trackers. No third-party scripts.</p>
+    </div>
+  </footer>
+</body>
+</html>

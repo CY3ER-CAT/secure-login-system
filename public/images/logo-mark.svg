@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-label="Secure Login">
+  <defs>
+    <linearGradient id="logo-gradient" x1="7" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5B8CFF"/>
+      <stop offset="1" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="logo-gradient-soft" x1="14" y1="14" x2="34" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7CA2FF"/>
+      <stop offset="1" stop-color="#C084FC"/>
+    </linearGradient>
+  </defs>
+  <rect x="1.5" y="1.5" width="45" height="45" rx="13" fill="#0A1020" stroke="url(#logo-gradient)" stroke-width="1.5"/>
+  <path d="M24 9.5 35 13.9v8.7c0 6.5-4.3 12.3-11 14.9-6.7-2.6-11-8.4-11-14.9v-8.7L24 9.5Z" stroke="url(#logo-gradient-soft)" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="19" y="23" width="10" height="7.5" rx="1.6" fill="url(#logo-gradient-soft)" opacity=".92"/>
+  <path d="M21 23v-2.4a3 3 0 0 1 6 0V23" stroke="url(#logo-gradient-soft)" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="24" cy="26.5" r="1.2" fill="#0A1020"/>
+  <path d="M24 27.4v1.6" stroke="#0A1020" stroke-width="1.2" stroke-linecap="round"/>
+</svg>
